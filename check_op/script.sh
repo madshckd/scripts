@@ -53,10 +53,8 @@ getResponse() {
     curl --silent --max-time 10 $URL | $PUP ':parent-of(:contains("'"Week $1"'"))' \
         | sed 's/<[^>]*>//g; s/<\/[^>]*>//g' | grep -v '^\s*$' > RESPONSE
 
-    # getting strings from RESPONSE
+    # getting status string from RESPONSE 
     STATUS=$(head -n 2 RESPONSE | tail -n 1 | sed 's/^[[:space:]]*//')
-    SCAN=$(head -n 3 RESPONSE | tail -n 1)
-    ORIGINAL=$(tail -n 1 RESPONSE)
 
     # depending on status string printing output
     case $STATUS in 
@@ -72,8 +70,8 @@ getResponse() {
         # displaying chapter details
         *)
             echo "CHAPTER $STATUS"
-            echo "SCAN RELEASE DATE :: $SCAN"
-            echo "OFFICIAL RELEASE DATE :: $ORIGINAL"
+            echo "SCAN RELEASE DATE :: $(head -n 3 RESPONSE | tail -n 1)"
+            echo "OFFICIAL RELEASE DATE :: $(tail -n 1 RESPONSE)"
             ;;
     esac
 
