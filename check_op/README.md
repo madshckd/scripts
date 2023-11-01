@@ -11,6 +11,7 @@ _you can also get pup using **go**_ [refer here](https://github.com/ericchiang/p
 **NOTE**   
 + After downloading pup, include its location in your PATH variable.
 + Or you can place it anywhere and edit `PUP` variable in the script to include its location.
++ Change both the script and pup file's permission so that it can be executed.
 + Included script is not user interactive by any means.
 + It's just a simple implementation that I wrote to practise my scripting skills.
 + It has many other benefits like making it run automaticallly and updating the status with any kind of notification.
